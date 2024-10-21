@@ -1,0 +1,20 @@
+A requirement for minikube is docker, howerver there may be some issues with docker
+* If there are issues with docker run the following commands:
+    sudo service docker restart  -  Restarts Docker
+
+
+* install kubectl as well: This allows user interaction with kubernetes clusters.
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
+
+* Error 1
+If error message "unit is masked"
+Docker, unit is masked: follow instructions here: https://forums.docker.com/t/failed-to-start-docker-service-unit-is-masked/67413/1
+ 
+* Error 2
+if errors still occur, install docker from the main website
+FOLLOW THIS DOCKER INSTALL GUIDE HERE:
+https://docs.docker.com/engine/install/ubuntu/
+
+* Error 3
+Docker dead, daemon inactive, solution
+https://serverfault.com/questions/1155735/docker-daemon-inactive-dead  

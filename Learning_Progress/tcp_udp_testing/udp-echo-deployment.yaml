@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udp-echo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udp-echo
+  template:
+    metadata:
+      labels:
+        app: udp-echo
+    spec:
+      containers:
+      - name: udp-echo
+        image: alpine
+        command: ["sh", "-c", "while true; do nc -u -l -p 9001 -e echo Hello from UDP Server; done"]
+        ports:
+        - containerPort: 9001
+          protocol: UDP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: udp-echo
+spec:
+  selector:
+    app: udp-echo
+  ports:
+    - protocol: UDP
+      port: 9001
+      targetPort: 9001
+  type: NodePort

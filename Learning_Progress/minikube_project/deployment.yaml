@@ -1,9 +1,28 @@
+# apiVersion: apps/v1
+# kind: Deployment
+# metadata:
+#   name: simple-web-app
+# spec:
+#   replicas: 2
+#   selector:
+#     matchLabels:
+#       app: simple-web-app
+#   template:
+#     metadata:
+#       labels:
+#         app: simple-web-app
+#     spec:
+#       containers:
+#       - name: simple-web-app
+#         image: simple-web-app:1.0
+#         ports:
+#         - containerPort: 5000
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: simple-web-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: simple-web-app
@@ -14,6 +33,15 @@ spec:
     spec:
       containers:
       - name: simple-web-app
-        image: simple-web-app:1.0
+        image: <your-dockerhub-username>/simple-web-app:1.1
+        env:
+        - name: HOSTNAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
         ports:
         - containerPort: 5000

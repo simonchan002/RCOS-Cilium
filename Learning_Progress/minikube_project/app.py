@@ -1,6 +1,7 @@
 # app.py
 from flask import Flask
 from flask import request
+import os
 
 app = Flask(__name__)
 
@@ -20,6 +21,18 @@ def greet():
             <input type="submit" value="Submit">
         </form>
     '''
+
+
+@app.route("/info")
+def info():
+    hostname = os.getenv("HOSTNAME", "Unknown Pod")
+    namespace = os.getenv("KUBERNETES_NAMESPACE", "Unknown Namespace")
+    return f"""
+        <h1>Kubernetes Pod Information</h1>
+        <p><b>Pod Name:</b> {hostname}</p>
+        <p><b>Namespace:</b> {namespace}</p>
+    """
+
 
 @app.route("/api", methods=["GET"])
 def api():

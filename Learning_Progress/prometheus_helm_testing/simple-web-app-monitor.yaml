@@ -1,0 +1,11 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: simple-web-app-monitor
+spec:
+  selector:
+    matchLabels:
+      app: simple-web-app
+  endpoints:
+  - port: "8000"
+    path: "/metrics"

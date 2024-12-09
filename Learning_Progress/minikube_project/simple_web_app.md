@@ -35,3 +35,22 @@ example: ![This is the simple web app](simple_web_app.png)
 
 ![Webapp stat display, for kubernetes pod name](web_app_stat_display.png)
 
+
+
+
+docker image errors:
+# Login to Docker Hub
+docker login
+
+# Replace YOUR_DOCKERHUB_USERNAME with your actual username
+docker tag simple-web-app:latest YOUR_DOCKERHUB_USERNAME/simple-web-app:latest
+docker push YOUR_DOCKERHUB_USERNAME/simple-web-app:latest
+
+Then modify the deployment.yaml to use the correct image name:
+
+Edit deployment.yaml to change the image line to:
+image: YOUR_DOCKERHUB_USERNAME/simple-web-app:latest
+
+Reapply the deployment:
+
+kubectl apply -f deployment.yaml

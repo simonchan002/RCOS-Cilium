@@ -46,7 +46,7 @@ def api():
 def get_weather(city):
     try:
         # Get API key from environment variable
-        api_key = os.getenv("a83a56a18dc7dcf62085dab08a06057e")
+        api_key = os.getenv("WEATHER_API_KEY")
         if not api_key:
             return jsonify({"error": "API key not configured"}), 500
 

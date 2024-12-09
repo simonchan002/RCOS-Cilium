@@ -48,3 +48,4 @@ Thumbs.db
 # Ignore directories created by package managers and compiled binaries
 bin/
 obj/
+cuda-repo-wsl-ubuntu-12-6-local_12.6.2-1_amd64.deb

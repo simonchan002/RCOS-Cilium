@@ -109,5 +109,14 @@ If you prefer a graphical user interface (GUI) to manage your Minikube cluster, 
 minikube dashboard
 This will open a web interface that allows you to view your Kubernetes resources, such as services, pods, and deployments.
 
+
+port forwarding with grafana:
+kubectl port-forward svc/grafana 3000:80 -n default
+user: 
+password: get from this command: kubectl get secret grafana -n default -o jsonpath="{.data.admin-password}" | base64 --decode
+
+
+![grafana dashboard](grafana.png)
+
 Final Thoughts
 Congratulations! You’ve now set up a local Kubernetes environment with Prometheus and Grafana on Minikube. This setup is great for learning how to monitor and visualize data within Kubernetes, and it will be a valuable skill in courses related to DevOps, cloud computing, and data engineering.

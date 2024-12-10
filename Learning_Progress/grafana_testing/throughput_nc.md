@@ -11,7 +11,7 @@ prometheus query to run:
 rate(node_network_transmit_bytes_total[1m])
 
 
-After running to send traffic
+Run the following command to send traffic:
 while true; do echo "test" | nc 192.168.49.2 32415; done
 
 ![thruput from nc](throughput_result.png)
